@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAuth } from './AuthContext';
+import { useAuth } from '../context/UserContext';
 import { mockResources } from '../lib/mockData';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';

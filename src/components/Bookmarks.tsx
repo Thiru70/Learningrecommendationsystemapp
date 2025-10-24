@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAuth } from './AuthContext';
+import { useAuth } from '../context/UserContext';
 import { mockResources } from '../lib/mockData';
 import { ResourceCard } from './ResourceCard';
 import { Bookmark } from 'lucide-react';

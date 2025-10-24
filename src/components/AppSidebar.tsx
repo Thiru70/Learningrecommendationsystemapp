@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import {
   Sidebar,
   SidebarContent,
@@ -12,59 +13,49 @@ import {
   SidebarMenuItem,
 } from './ui/sidebar';
 import {
-  Home,
+  LayoutDashboard,
   Bookmark,
   User,
-  LogOut,
-  BookOpen,
-  Moon,
-  Sun,
   Compass,
   Route,
-  Bell,
   ListChecks,
+  Target,
 } from 'lucide-react';
-import { useAuth } from './AuthContext';
-import { Button } from './ui/button';
 
-interface AppSidebarProps {
-  currentPage: string;
-  onNavigate: (page: string) => void;
-}
-
-export const AppSidebar: React.FC<AppSidebarProps> = ({ currentPage, onNavigate }) => {
-  const { user, logout, isDarkMode, toggleDarkMode } = useAuth();
+export const AppSidebar: React.FC = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const menuItems = [
     {
-      title: 'Home',
-      icon: Home,
-      page: 'home',
+      title: 'Dashboard',
+      icon: LayoutDashboard,
+      path: '/dashboard',
     },
     {
       title: 'Tasks',
       icon: ListChecks,
-      page: 'tasks',
-    },
-    {
-      title: 'Recommendations',
-      icon: Compass,
-      page: 'recommendations',
+      path: '/tasks',
     },
     {
       title: 'Learning Path',
       icon: Route,
-      page: 'learning-path',
+      path: '/learning-path',
+    },
+    {
+      title: 'Recommendations',
+      icon: Compass,
+      path: '/recommendations',
     },
     {
       title: 'Bookmarks',
       icon: Bookmark,
-      page: 'bookmarks',
+      path: '/bookmarks',
     },
     {
       title: 'Profile',
       icon: User,
-      page: 'profile',
+      path: '/profile',
     },
   ];
 
@@ -72,12 +63,12 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({ currentPage, onNavigate 
     <Sidebar>
       <SidebarHeader>
         <div className="flex items-center gap-2 px-4 py-2">
-          <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
-            <BookOpen className="w-5 h-5 text-white" />
+          <div className="w-8 h-8 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center">
+            <Target className="w-5 h-5 text-white" />
           </div>
           <div>
-            <p className="font-semibold">LearnHub</p>
-            <p className="text-xs text-gray-600 dark:text-gray-400">Learning Platform</p>
+            <p className="font-semibold">LearnAI</p>
+            <p className="text-xs text-gray-600 dark:text-gray-400">Smart Learning</p>
           </div>
         </div>
       </SidebarHeader>
@@ -87,10 +78,10 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({ currentPage, onNavigate 
           <SidebarGroupContent>
             <SidebarMenu>
               {menuItems.map((item) => (
-                <SidebarMenuItem key={item.page}>
+                <SidebarMenuItem key={item.path}>
                   <SidebarMenuButton
-                    onClick={() => onNavigate(item.page)}
-                    isActive={currentPage === item.page}
+                    onClick={() => navigate(item.path)}
+                    isActive={location.pathname === item.path}
                   >
                     <item.icon className="w-4 h-4" />
                     <span>{item.title}</span>
@@ -102,41 +93,10 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({ currentPage, onNavigate 
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
-        <div className="px-4 py-2 space-y-2">
-          <Button
-            variant="outline"
-            className="w-full justify-start"
-            onClick={toggleDarkMode}
-          >
-            {isDarkMode ? (
-              <>
-                <Sun className="w-4 h-4 mr-2" />
-                Light Mode
-              </>
-            ) : (
-              <>
-                <Moon className="w-4 h-4 mr-2" />
-                Dark Mode
-              </>
-            )}
-          </Button>
-          <Button
-            variant="outline"
-            className="w-full justify-start"
-            onClick={logout}
-          >
-            <LogOut className="w-4 h-4 mr-2" />
-            Log Out
-          </Button>
+        <div className="px-4 py-2 text-xs text-gray-500 dark:text-gray-400">
+          <p>© 2025 LearnAI</p>
+          <p>Powered by ML</p>
         </div>
-        {user && (
-          <div className="px-4 py-2 border-t dark:border-gray-700">
-            <p className="truncate">{user.name}</p>
-            <p className="text-xs text-gray-600 dark:text-gray-400 truncate">
-              {user.email}
-            </p>
-          </div>
-        )}
       </SidebarFooter>
     </Sidebar>
   );

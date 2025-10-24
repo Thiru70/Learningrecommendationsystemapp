@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useAuth } from './AuthContext';
+import { useAuth } from '../context/UserContext';
 import { apiService, Notification } from '../lib/apiService';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';

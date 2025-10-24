@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useAuth } from './AuthContext';
+import { useAuth } from '../context/UserContext';
 import { apiService, ProgressPrediction as ProgressPredictionType } from '../lib/apiService';
 import { Alert, AlertDescription, AlertTitle } from './ui/alert';
 import { AlertCircle, CheckCircle2, TrendingUp, Info } from 'lucide-react';

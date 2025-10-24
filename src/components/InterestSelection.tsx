@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAuth } from './AuthContext';
+import { useAuth } from '../context/UserContext';
 import { availableInterests } from '../lib/mockData';
 import { Button } from './ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';

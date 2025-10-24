@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { LearningResource } from '../lib/mockData';
-import { useAuth } from './AuthContext';
+import { useAuth } from '../context/UserContext';
 import { apiService } from '../lib/apiService';
 import { Card, CardContent, CardFooter } from './ui/card';
 import { Button } from './ui/button';

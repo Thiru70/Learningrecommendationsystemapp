@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Input } from './ui/input';
 import { Search, Loader2, History } from 'lucide-react';
+import { Input } from './ui/input';
+import { Button } from './ui/button';
 import { apiService, SearchResult } from '../lib/apiService';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from './ui/command';
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
-import { useAuth } from './AuthContext';
+import { useAuth } from '../context/UserContext';
 
 interface SearchBarProps {
   onSearchResults: (results: SearchResult[]) => void;

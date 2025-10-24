@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useAuth } from './AuthContext';
+import { useAuth } from '../context/UserContext';
 import { apiService, LearningPathStep } from '../lib/apiService';
 import { mockResources } from '../lib/mockData';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';

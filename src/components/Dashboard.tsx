@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { useAuth } from './AuthContext';
+import { useUser } from '../context/UserContext';
 import { mockResources } from '../lib/mockData';
 import { ResourceCard } from './ResourceCard';
 import { SearchBar } from './SearchBar';
@@ -27,7 +27,7 @@ import { Checkbox } from './ui/checkbox';
 import { Label } from './ui/label';
 
 export const Dashboard: React.FC = () => {
-  const { user } = useAuth();
+  const { user } = useUser();
   const [sortBy, setSortBy] = useState<'recommended' | 'likes' | 'newest'>('recommended');
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [selectedDifficulties, setSelectedDifficulties] = useState<string[]>([]);

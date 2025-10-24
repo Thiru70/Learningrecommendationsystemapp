@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAuth } from './AuthContext';
+import { useAuth } from '../context/UserContext';
 import { mockMicroTasks, MicroTask, TaskInteraction } from '../lib/microTaskData';
 import { TaskCard } from './TaskCard';
 import { TaskGuidanceModal } from './TaskGuidanceModal';
